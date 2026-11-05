@@ -1,0 +1,16 @@
+[package]
+name = "warden-edr"
+version = "0.1.0"
+edition = "2021"
+authors = ["Lazarus Ebi <lazorronchain@gmail.com>"]
+description = "Lightweight Linux Endpoint Detection & Response (EDR) and Memory Anomaly Hunter in Rust"
+license = "MIT"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+walkdir = "2.4"
+thiserror = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
