@@ -4,6 +4,6 @@ pub mod fim;
 pub mod engine;
 
 pub use alert::{EdrAlert, Severity};
-pub use process::{ProcessScanner, MemoryRegion, ProcessInfo};
-pub use fim::{FimEngine, FileBaseline};
+pub use process::{ProcessScanner, ProcessInfo, MemoryRegion, ProcessAuditState};
+pub use fim::{FimEngine, FileBaseline, FimVerificationState};
 pub use engine::WardenEngine;

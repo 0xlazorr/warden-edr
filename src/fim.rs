@@ -1,13 +1,30 @@
 use std::collections::HashMap;
-use std::fs::{self, File};
+use std::fs::File;
 use std::io::{self, Read};
 use std::path::{Path, PathBuf};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum FimVerificationState {
+    Baseline,
+    Validating,
+    VerifiedIntact,
+    Tampered,
+    Missing,
+}
+
+impl Default for FimVerificationState {
+    fn default() -> Self {
+        FimVerificationState::Baseline
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FileBaseline {
     pub files: HashMap<String, String>, // Path -> SHA256
+    #[serde(default)]
+    pub state: FimVerificationState,
 }
 
 pub struct FimEngine;
@@ -36,7 +53,10 @@ impl FimEngine {
                 }
             }
         }
-        FileBaseline { files }
+        FileBaseline {
+            files,
+            state: FimVerificationState::Baseline,
+        }
     }
 
     pub fn verify_baseline(baseline: &FileBaseline) -> Vec<(String, String)> {
