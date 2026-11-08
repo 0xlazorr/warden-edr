@@ -2,7 +2,7 @@
 name = "warden-edr"
 version = "0.1.0"
 edition = "2021"
-authors = ["Lazarus Ebi <lazorronchain@gmail.com>"]
+authors = ["Lazarus Ebi <lazarusebi111@gmail.com>"]
 description = "Lightweight Linux Endpoint Detection & Response (EDR) and Memory Anomaly Hunter in Rust"
 license = "MIT"
 
